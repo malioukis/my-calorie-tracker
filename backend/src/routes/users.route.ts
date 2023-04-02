@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { User } from '../models/user.model';
 
 const router = Router();
-// Get One
-router.get('/', (req: Request, res: Response<User>) => {
+// test
+router.get('/test', (req: Request, res: Response<User>) => {
   res.json({
     email: 'admin@admin.com',
     firstName: 'admin',
@@ -18,6 +18,9 @@ router.get('/', (req: Request, res: Response<User>) => {
     },
   });
 });
+
+// Get One
+
 // Create One
 
 // Update One
