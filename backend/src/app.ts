@@ -1,13 +1,11 @@
 import express, { Application, Request, Response } from 'express';
+import usersRoute from './routes/users.route';
+import cors from 'cors';
 
 const app: Application = express();
 
-const port = 3001;
+// app.use(cors());
 
-app.get('/toto', (req: Request, res: Response) => {
-  res.send('Hello toto');
-});
+app.use('/api/user', usersRoute);
 
-app.listen(port, function () {
-  console.log(`App is listening on port ${port} !`);
-});
+export default app;
