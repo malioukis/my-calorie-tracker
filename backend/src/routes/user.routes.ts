@@ -9,9 +9,8 @@ router.get('/test', (req: Request, res: Response<IUser>) => {
     email: 'admin@admin.com',
     firstName: 'admin',
     lastName: 'adminakis',
-    creationDate: undefined,
-    inactiveDate: undefined,
     active: true,
+    deleted: false,
     userHealthMetrics: {
       weightKg: 22,
       heightCm: 180,
@@ -24,7 +23,7 @@ router.get('/test', (req: Request, res: Response<IUser>) => {
 // router.get('/', UserController.findOne());
 
 // Get One
-// router.get('/', UserController.findOne());
+router.get('/:id', UserController.getUser);
 
 // Create One
 router.post('/new', UserController.createUser);
