@@ -1,6 +1,6 @@
 import { HealthMetrics } from './health-metrics.model';
-
-export interface User {
+import mongoose, { Document, Schema } from 'mongoose';
+export interface IUser {
   firstName: string;
   lastName: string;
   active: boolean;
@@ -9,3 +9,11 @@ export interface User {
   email: string;
   userHealthMetrics: HealthMetrics;
 }
+// for client requests
+export interface IUserModel extends IUser, Document {}
+
+const UserSchema: Schema = new Schema({
+  firstName: { type: String, required: true },
+});
+
+export default mongoose.model<IUserModel>('User', UserSchema);

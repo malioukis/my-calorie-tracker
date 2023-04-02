@@ -1,9 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { User } from '../models/user.model';
+import { IUser } from '../models/user.model';
+import UserController from '../controllers/user.controller';
 
 const router = Router();
 // test
-router.get('/test', (req: Request, res: Response<User>) => {
+router.get('/test', (req: Request, res: Response<IUser>) => {
   res.json({
     email: 'admin@admin.com',
     firstName: 'admin',
@@ -19,9 +20,14 @@ router.get('/test', (req: Request, res: Response<User>) => {
   });
 });
 
+// Get All
+// router.get('/', UserController.findOne());
+
 // Get One
+// router.get('/', UserController.findOne());
 
 // Create One
+router.post('/new', UserController.createUser);
 
 // Update One
 
