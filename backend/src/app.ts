@@ -1,11 +1,11 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application, Request, Response } from 'express';
 
 const app: Application = express();
 
 const port = 3001;
 
-app.get("/toto", (req: Request, res: Response) => {
-  res.send("Hello toto");
+app.get('/toto', (req: Request, res: Response) => {
+  res.send('Hello toto');
 });
 
 app.listen(port, function () {
