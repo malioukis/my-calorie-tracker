@@ -1,8 +1,10 @@
 <p-toolbar>
   <div class="flex flex-wrap justify-content-start">
-    <div class="logo">My Calorie Tracker LOGO</div>
+    <div class="logo" routerLink="/">My Calorie Tracker LOGO</div>
   </div>
   <div class="flex flex-wrap justify-content-end">
-    <div class="p-button" routerLink="/auth/login">LOGIN</div>
+    <p-button class="mr-1" routerLink="/auth/register">Register</p-button>
+    <p-button routerLink="/auth/login">Login</p-button>
+    <ng-container *ngIf="true"></ng-container>
   </div>
 </p-toolbar>

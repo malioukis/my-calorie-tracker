@@ -1,0 +1,30 @@
+<div class="col-3">
+  <p-card [header]="mode === modesE.LOGIN ? 'LOGIN' : 'REGISTER'">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="
+        onLogin(
+          loginForm.get('email')?.value || '',
+          loginForm.get('password')?.value || ''
+        )
+      "
+    >
+      <span class="block p-float-label">
+        <input formControlName="email" pInputText id="email" />
+        <label>Email</label>
+      </span>
+
+      <span class="block p-float-label">
+        <p-password
+          formControlName="password"
+          id="password"
+          [toggleMask]="true"
+          [feedback]="false"
+        ></p-password>
+        <label>Password</label>
+      </span>
+      <p-button type="submit" [disabled]="!loginForm.valid">Login</p-button>
+    </form>
+  </p-card>
+</div>
+{{ loginForm.value | json }}
