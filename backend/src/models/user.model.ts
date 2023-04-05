@@ -1,13 +1,15 @@
 import { HealthMetrics } from './health-metrics.model';
 import mongoose, { Document, Schema } from 'mongoose';
+
 export interface IUser {
   firstName: string;
   lastName: string;
+  email: string;
   active: boolean;
   deleted: boolean;
-  email: string;
   userHealthMetrics?: HealthMetrics;
 }
+
 // for client requests
 export interface IUserModel extends IUser, Document {}
 

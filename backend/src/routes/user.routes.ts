@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import { IUser } from '../models/user.model';
 import UserController from '../controllers/user.controller';
 
@@ -28,6 +28,8 @@ router.get('/:id', UserController.getUser);
 // Create One
 router.post('/new', UserController.createUser);
 
+// Register one
+router.post('/new', UserController.registerUser);
 // Update One
 
 // Delete One
