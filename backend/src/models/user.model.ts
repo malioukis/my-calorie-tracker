@@ -13,6 +13,7 @@ export interface IUser {
 // for client requests
 export interface IUserModel extends IUser, Document {}
 
+// sets up the structure of the user object
 const UserSchema: Schema = new Schema<IUserModel>(
   {
     firstName: { type: String, required: true },
@@ -23,5 +24,5 @@ const UserSchema: Schema = new Schema<IUserModel>(
     versionKey: false,
   }
 );
-
+// creates the user object and makes it available for use in other parts of the program.
 export default mongoose.model<IUserModel>('User', UserSchema);
