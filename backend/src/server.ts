@@ -1,43 +1,25 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 import { config } from './config/config';
-import express from 'express';
 import logger from './utils/logger';
 import http from 'http';
-import cors from 'cors';
-import IndexRoutes from './routes/index.routes';
-import helmet from 'helmet';
-import morgan from 'morgan';
-const app = express();
+import { app } from './app';
 
-/*libs*/
-app.use(express.json());
-app.use(helmet());
-app.use(cors());
-app.use(
-  morgan(':method :url :status :res[content-length] - :response-time ms')
-);
+// Connect to MongoDB and then start server
 
-/*Api Routes*/
-app.use('/api', IndexRoutes);
-
-/*Log HTTP*/
-
-// Connect to MongoDB
-mongoose
-  .connect(config.mongo.url, {
-    retryWrites: true,
-    writeConcern: { w: 'majority' },
-    authSource: 'admin',
-    dbName: config.mongo.database,
-  })
-  .then(() => {
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect(config.mongo.url, {
+      retryWrites: true,
+      writeConcern: { w: 'majority' },
+      authSource: 'admin',
+      dbName: config.mongo.database,
+    });
     logger.info('CONNECTED TO DB');
-    //start server after connecting to db
     startServer();
-  })
-  .catch((error) => {
+  } catch (error) {
     logger.error(error);
-  });
+  }
+};
 
 const startServer = () => {
   http
@@ -46,3 +28,5 @@ const startServer = () => {
       logger.info(`Server is running on port ${config.server.port}`)
     );
 };
+
+connectToDatabase();
