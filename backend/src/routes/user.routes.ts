@@ -1,10 +1,9 @@
-import { Request, Response, Router } from 'express';
-import { IUser } from '../models/user.model';
+import { Router } from 'express';
 import UserController from '../controllers/user.controller';
 
 const router = Router();
 // test
-router.get('/test', (req: Request, res: Response<IUser>) => {
+/*router.get('/test', (req: Request, res: Response<IUser>) => {
   res.json({
     email: 'admin@admin.com',
     firstName: 'admin',
@@ -17,7 +16,7 @@ router.get('/test', (req: Request, res: Response<IUser>) => {
       activityLevel: 1,
     },
   });
-});
+});*/
 
 // Get All
 // router.get('/', UserController.findOne());
@@ -29,7 +28,7 @@ router.get('/:id', UserController.getUser);
 router.post('/new', UserController.createUser);
 
 // Register one
-router.post('/new', UserController.registerUser);
+router.post('/new2', UserController.registerUser);
 // Update One
 
 // Delete One
