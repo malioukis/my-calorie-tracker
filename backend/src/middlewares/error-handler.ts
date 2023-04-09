@@ -1,4 +1,4 @@
-import { NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import ErrorResponse from '../interfaces/error-response.interface';
 
 const errorHandler = (
@@ -14,3 +14,5 @@ const errorHandler = (
     stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
   });
 };
+
+export { errorHandler };
